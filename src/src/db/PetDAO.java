@@ -24,7 +24,7 @@ public class PetDAO {
 	// SQL statements
 	private final String SELECTALL = "select * from public.pet";
 	private final String GETBYID = "select * from public.pet where idpet=";
-	private final String INSERT = "insert into public.pet (`idpet`,`species`,`race`,`price`)values";
+	private final String INSERT = "insert into public.pet (idpet,species,race,price)values";
 	private final String DELETEBYID = "delete from public.pet where idpet=";
 	private final String DELETEALL = "delete from public.pet";
 

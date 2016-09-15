@@ -23,40 +23,62 @@
         <h1>Welcome to the Nova PetShop!</h1>
     </div>
 
-    <div class="container-fluid">
-        <div id="tableView" class="table-responsive" ng-controller="petTable">
-            <table class="table table-hover">
-                <thead>
-                    <tr class="bg-primary">
-                        <th>Race</th>
-                        <th>ID</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="pet in pets">
-                        <td class="col-md-4">{{pet.race}}</td>
-                        <td class="col-md-4">{{pet.id}}</td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div>
-            Type an ID to see more details: <input id="input" type="text"><button id="submit">Submit</button>
-            <div id="paragraphs" class="well">
-                <p id="species"></p>
-                <p id="race"></p>
-                <p id="price"></p>
-            </div>
+    <div class="container-fluid" id="main">
+        <table class="table">
+            <tr>
+                <td class="col-md-6">
+                    <div id="tableView" class="table-responsive" ng-controller="petTable">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr class="bg-primary">
+                                    <th>Race</th>
+                                    <th>ID</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="pet in pets">
+                                    <td class="col-md-4">{{pet.race}}</td>
+                                    <td class="col-md-4">{{pet.id}}</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        Type an ID to see more details: <input id="input" type="text"><button id="submit">Submit</button>
+                        <div id="paragraphs" class="well">
+                            <p id="species"></p>
+                            <p id="race"></p>
+                            <p id="price"></p>
+                            <br>
+                            <button id="delete">Delete</button>
+                        </div>
 
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <button id="deleteAll">Delete All Pets</button>
+        <button id="add">Add new Pet</button>
+        <div id="hiddenForm">
+            <form id="addForm">
+                Species: <input id="fSpecies" type="text"><br> Race: <input id="fRace" type="text"><br> Price: <input id="fPrice" type="text"><br> ID (must be unique!): <input id="fID" type="text"><br>
+                <button id="send">Add</button>
+            </form>
         </div>
+
     </div>
 
     <script>
         $('#paragraphs').hide()
+        $('#hiddenForm').hide();
+
         $('#submit').click(function() {
             var id = $('#input').val();
+            $('#input').html('')
             $.getJSON('http://localhost:8080/PetShop/rest/shop/browse/' + id)
                 .done(function(data) {
                     $('#species').html("Species: " + data.species)
@@ -66,6 +88,56 @@
                 })
                 .fail(function() {
                     console.log("error")
+                })
+        })
+
+        $('#delete').click(function() {
+            var id = $('#input').val();
+            $.ajax({
+                    url: 'http://localhost:8080/PetShop/rest/shop/delete/' + id,
+                    method: 'DELETE'
+                })
+                .done(function(response) {
+                    location.reload(true);
+                })
+                .fail(function() {
+                    console.log("error")
+                })
+        })
+
+        $('#deleteAll').click(function() {
+            $.ajax({
+                    url: 'http://localhost:8080/PetShop/rest/shop/delete/all',
+                    method: 'DELETE'
+                })
+                .done(function(response) {
+                    location.reload(true);
+                })
+                .fail(function() {
+                    console.log("error")
+                })
+        })
+
+        $('#add').click(function() {
+            $('#hiddenForm').show()
+        })
+
+        $('#send').click(function() {
+            $.ajax({
+                    url: 'http://localhost:8080/PetShop/rest/shop/add',
+                    data: {
+                        species: $('#fSpecies').val(),
+                        race: $('#fRace').val(),
+                        price: $('#fPrice').val(),
+                        id: $('#fID').val()
+                    },
+                    method: 'POST'
+                })
+                .done(function() {
+                    location.reload(true)
+                })
+                .fail(function() {
+                    console.log("error on submit")
                 })
         })
 
