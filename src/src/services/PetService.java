@@ -8,8 +8,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.jboss.security.annotation.SecurityDomain;
-
 import src.entities.Pet;
 import src.entities.PetShop;
 
@@ -21,6 +19,7 @@ public class PetService {
 	@GET
 	@Path("browse/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
+	@RolesAllowed({"employer","employee"})
 	public Pet getPetById(@PathParam("id")int id){
 		return shop.getPetById(id);
 	}
@@ -28,6 +27,7 @@ public class PetService {
 	
 	@DELETE
 	@Path("delete/{id}")
+	@RolesAllowed("employer")
 	public void deletePetById(@PathParam("id")int id){
 		shop.removePet(id);
 	}

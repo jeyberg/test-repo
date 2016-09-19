@@ -11,8 +11,6 @@ import javax.ws.rs.Produces;
 
 import javax.ws.rs.core.*;
 
-import org.jboss.security.annotation.SecurityDomain;
-
 import src.entities.Pet;
 import src.entities.PetShop;
 
@@ -23,6 +21,7 @@ public class ShopService {
 	@GET
 	@Path("browse")
 	@Produces(MediaType.APPLICATION_JSON)
+	@RolesAllowed({"employer","employee"})
 	public Pet[] getPetsArray(){
 		return shop.getAllPets();
 	}
@@ -31,6 +30,7 @@ public class ShopService {
 	@POST
 	@Path("add")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	@RolesAllowed("employer")
 	public void addPet(@FormParam("species") String species, @FormParam("race") String race, @FormParam("price") float price, @FormParam("id") int id){
 		shop.addPet(species, race, price, id);
 	}
@@ -38,6 +38,7 @@ public class ShopService {
 	
 	@DELETE
 	@Path("delete/all")
+	@RolesAllowed("employer")
 	public void deletePets(){
 		shop.deleteAll();
 	}
