@@ -21,9 +21,9 @@
 		<url-pattern>/logout</url-pattern>
 	</servlet-mapping>
 	<context-param>
-      <param-name>resteasy.role.based.security</param-name>
-      <param-value>true</param-value>
-   </context-param>
+		<param-name>resteasy.role.based.security</param-name>
+		<param-value>true</param-value>
+	</context-param>
 	<login-config>
 		<auth-method>FORM</auth-method>
 		<realm-name>secureDomain</realm-name>
@@ -36,6 +36,7 @@
 		<web-resource-collection>
 			<web-resource-name>Some name</web-resource-name>
 			<url-pattern>/index.html</url-pattern>
+			<http-method>GET</http-method>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>employer</role-name>
