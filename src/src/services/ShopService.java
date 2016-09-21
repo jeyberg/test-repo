@@ -15,6 +15,7 @@ import src.entities.Pet;
 import src.entities.PetShop;
 
 @Path("shop")
+
 public class ShopService {
 	private PetShop shop = PetShop.getInstance();
 	
