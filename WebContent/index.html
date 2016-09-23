@@ -79,7 +79,7 @@
         $('#submit').click(function() {
             var id = $('#input').val();
             $('#input').html('')
-            $.getJSON('https://localhost:8444/PetShop/rest/shop/browse/' + id)
+            $.getJSON('http://localhost:8081/PetShop/rest/shop/browse/' + id)
                 .done(function(data) {
                     $('#species').html("Species: " + data.species)
                     $('#race').html("Race: " + data.race)
@@ -94,7 +94,7 @@
         $('#delete').click(function() {
             var id = $('#input').val();
             $.ajax({
-                    url: 'https://localhost:8444/PetShop/rest/shop/delete/' + id,
+                    url: 'http://localhost:8081/PetShop/rest/shop/delete/' + id,
                     method: 'DELETE'
                 })
                 .done(function(response) {
@@ -107,7 +107,7 @@
 
         $('#deleteAll').click(function() {
             $.ajax({
-                    url: 'https://localhost:8444/PetShop/rest/shop/delete/all',
+                    url: 'http://localhost:8081/PetShop/rest/shop/delete/all',
                     method: 'DELETE'
                 })
                 .done(function(response) {
@@ -124,7 +124,7 @@
 
         $('#send').click(function() {
             $.ajax({
-                    url: 'https://localhost:8444/PetShop/rest/shop/add',
+                    url: 'http://localhost:8081/PetShop/rest/shop/add',
                     data: {
                         species: $('#fSpecies').val(),
                         race: $('#fRace').val(),
@@ -149,7 +149,7 @@
         }])
 
         app.controller('petTable', function($scope, $http) {
-            $http.get('https://localhost:8444/PetShop/rest/shop/browse')
+            $http.get('http://localhost:8081/PetShop/rest/shop/browse')
                 .then(function(response) {
                     $scope.pets = response.data
                 })
