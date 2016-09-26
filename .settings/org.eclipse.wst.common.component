@@ -5,6 +5,21 @@
         <dependent-module archiveName="postgresql-9.4.1210.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/jan/workspace/postgresql-9.4.1210.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="commons-collections-3.2.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/jan/workspace/PetShop/commons-collections-3.2.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="shiro-core-1.3.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/jan/workspace/PetShop/shiro-core-1.3.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="shiro-web-1.3.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/jan/workspace/PetShop/shiro-web-1.3.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="slf4j-1.7.21.zip" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/jan/workspace/PetShop/slf4j-1.7.21.zip">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-beanutils-1.9.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/jan/workspace/PetShop/commons-beanutils-1.9.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="PetShop"/>
         <property name="java-output-path" value="/PetShop/build/classes"/>
     </wb-module>
