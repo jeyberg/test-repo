@@ -63,6 +63,7 @@
         </table>
         <button id="deleteAll">Delete All Pets</button>
         <button id="add">Add new Pet</button>
+        <a href="/PetShop/logout">Logout</a>
         <div id="hiddenForm">
             <form id="addForm">
                 Species: <input id="fSpecies" type="text"><br> Race: <input id="fRace" type="text"><br> Price: <input id="fPrice" type="text"><br> ID (must be unique!): <input id="fID" type="text"><br>
@@ -74,12 +75,12 @@
 
     <script>
         $('#paragraphs').hide()
-        $('#hiddenForm').hide();
+        $('#hiddenForm').hide()
 
         $('#submit').click(function() {
-            var id = $('#input').val();
+            var id = $('#input').val()
             $('#input').html('')
-            $.getJSON('http://localhost:8080/PetShop/rest/shop/browse/' + id)
+            $.getJSON('http://localhost:8081/PetShop/rest/shop/browse/' + id)
                 .done(function(data) {
                     $('#species').html("Species: " + data.species)
                     $('#race').html("Race: " + data.race)
@@ -92,13 +93,13 @@
         })
 
         $('#delete').click(function() {
-            var id = $('#input').val();
+            var id = $('#input').val()
             $.ajax({
-                    url: 'http://localhost:8080/PetShop/rest/shop/delete/' + id,
+                    url: 'http://localhost:8081/PetShop/rest/shop/delete/' + id,
                     method: 'DELETE'
                 })
                 .done(function(response) {
-                    location.reload(true);
+                    location.reload(true)
                 })
                 .fail(function() {
                     console.log("error")
@@ -107,11 +108,11 @@
 
         $('#deleteAll').click(function() {
             $.ajax({
-                    url: 'http://localhost:8080/PetShop/rest/shop/delete/all',
+                    url: 'http://localhost:8081/PetShop/rest/shop/delete/all',
                     method: 'DELETE'
                 })
                 .done(function(response) {
-                    location.reload(true);
+                    location.reload(true)
                 })
                 .fail(function() {
                     console.log("error")
@@ -124,7 +125,7 @@
 
         $('#send').click(function() {
             $.ajax({
-                    url: 'http://localhost:8080/PetShop/rest/shop/add',
+                    url: 'http://localhost:8081/PetShop/rest/shop/add',
                     data: {
                         species: $('#fSpecies').val(),
                         race: $('#fRace').val(),
@@ -149,7 +150,7 @@
         }])
 
         app.controller('petTable', function($scope, $http) {
-            $http.get('http://localhost:8080/PetShop/rest/shop/browse')
+            $http.get('http://localhost:8081/PetShop/rest/shop/browse')
                 .then(function(response) {
                     $scope.pets = response.data
                 })
