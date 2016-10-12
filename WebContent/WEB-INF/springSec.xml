@@ -4,14 +4,21 @@
 		http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security.xsd">
+		
+	<http pattern="/rest/**" create-session="never">
+		<intercept-url pattern="/**" access="hasRole('EMPLOYER')" />
+		<http-basic />
+	</http>
 	<http>
 		<intercept-url pattern="/login.jsp" access="hasRole('ANONYMOUS')" />
-		<intercept-url pattern="/**" access="hasRole('EMPLOYEE') or hasRole('EMPLOYER')" />
+		<intercept-url pattern="/index.jsp" access="hasRole('EMPLOYEE') or hasRole('EMPLOYER')" />
 		<form-login login-page="/login.jsp" default-target-url="/index.jsp"
 			always-use-default-target="true" />
 		<logout />
 		<remember-me />
+		<csrf disabled="true" />
 	</http>
+		
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>

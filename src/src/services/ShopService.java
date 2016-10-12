@@ -10,8 +10,6 @@ import javax.ws.rs.Produces;
 
 import javax.ws.rs.core.*;
 
-import org.springframework.security.access.prepost.PreAuthorize;
-
 import src.entities.Pet;
 import src.entities.PetShop;
 
@@ -19,7 +17,6 @@ import src.entities.PetShop;
 public class ShopService {
 	private PetShop shop = PetShop.getInstance();
 	
-	@PreAuthorize("hasAuthority('ROLE_EMPLOYER')")
 	@GET
 	@Path("browse")
 	@Produces(MediaType.APPLICATION_JSON)
