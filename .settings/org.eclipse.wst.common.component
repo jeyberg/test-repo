@@ -2,9 +2,6 @@
     <wb-module deploy-name="PetShop">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <dependent-module archiveName="postgresql-9.4.1210.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/jan/workspace/postgresql-9.4.1210.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="commons-collections-3.2.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/jan/workspace/PetShop/commons-collections-3.2.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
@@ -18,6 +15,9 @@
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="commons-beanutils-1.9.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/jan/workspace/PetShop/commons-beanutils-1.9.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="postgresql-9.4.1211.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/jan/workspace/PetShop/WebContent/WEB-INF/postgresql-9.4.1211.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="context-root" value="PetShop"/>
