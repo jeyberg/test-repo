@@ -20,6 +20,15 @@
         <dependent-module archiveName="postgresql-9.4.1211.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/jan/workspace/PetShop/WebContent/WEB-INF/postgresql-9.4.1211.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="jackson-databind-2.8.4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/jan/jackson-databind-2.8.4.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jackson-core-2.8.4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/jan/jackson-core-2.8.4.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jjwt-0.7.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/jan/jjwt-0.7.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="PetShop"/>
         <property name="java-output-path" value="/PetShop/build/classes"/>
     </wb-module>
